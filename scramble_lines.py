@@ -23,6 +23,16 @@ else:                   # syslen must be 5
     start = int(sys.argv[3]) - 1
     end = int(sys.argv[4])
 
+if start < 0 or start > len(file_list):
+    print('error: invalid start value')
+    exit(1)
+if end < 0 or end > len(file_list):
+    print('error: invalid end value')
+    exit(1)
+if start > end:
+    print('error: start cannot be greater than end')
+    exit(0)
+
 # @TODO: make sure start and end values are valid
 
 sub_file_list = file_list[start:end]
