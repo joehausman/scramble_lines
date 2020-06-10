@@ -20,11 +20,15 @@ if syslen == 3:         # will scramble the whole file
     start = 0
     end = len(file_list)
 else:                   # syslen must be 5
-    start = int(sys.argv[3])
+    start = int(sys.argv[3]) - 1
     end = int(sys.argv[4])
+
+# @TODO: make sure start and end values are valid
+
+sub_file_list = file_list[start:end]
+
+random.shuffle(sub_file_list)       # this function makes things so easy
+file_list[start:end] = sub_file_list
 
 with open(sys.argv[2], 'w') as outfile:
     outfile.write(''.join(file_list))
-
-# print('start: ' + str(start))
-# print('end: ' + str(end))
